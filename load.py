@@ -21,7 +21,7 @@ def main():
     filename, port = user_input()
     print(filename)
     print(port)
-    insert_data(port,filename)
+    insert_data(filename, port)
 
 if __name__ == "__main__":
     main()
