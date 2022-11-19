@@ -23,10 +23,7 @@ def main():
     print(filename)
     print(port)
     insert_data(filename, port)
-<<<<<<< HEAD
 
-=======
->>>>>>> ec0e77a654cc218d1cc010173cb1810e463e608c
 
 if __name__ == "__main__":
     main()
