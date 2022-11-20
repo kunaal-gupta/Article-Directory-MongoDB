@@ -43,10 +43,7 @@ def search_for_authors(dblp:Collection):
         print()
         print(author_name)
         for doc in cursor:
-            print("Title: " + str(doc.get('title')))
-            print("Year: " + str(doc.get('year')))
-            print("Venue: " + str(doc.get('venue')))
-            print()
+            print("Title: " + str(doc.get('title')) + '\n' + "Year: " + str(doc.get('year')) + '\n' + "Venue: " + str(doc.get('venue')) + '\n')
     else:
         print("Sorry, no author found with the given keyword: "+keyword)
 
