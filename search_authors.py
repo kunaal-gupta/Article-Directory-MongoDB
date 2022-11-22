@@ -4,7 +4,7 @@ from pymongo import MongoClient
 import json
 from pprint import pprint
 from datetime import datetime
-
+import pandas as pd
 
 client = MongoClient("mongodb://localhost:27017")
 
@@ -17,22 +17,26 @@ def search_for_authors(dblp:Collection):
     time_start=datetime.now()
     cursor = dblp.find({"$text":{"$search" : keyword}})
 
-
-    authors_list = set([])
+    authors_list = []
     for doc in cursor:
-        authors_list.update(doc.get('authors'))
-    authors_list = list(authors_list)
+        authors_list.extend(doc.get('authors'))
+    counts = pd.Series(authors_list).value_counts()
+    authors_list = list(set(authors_list))
     
     authors = []
+    author_count = 0
     for author in authors_list:
         if (re.search(r"\b" + keyword + r"\b", author,re.IGNORECASE)):
             authors.append(author)
+            print(str(author_count) + " " + author + "  "+ str(counts.get(author)))
+            author_count = author_count+1
+
+    time_end=datetime.now()
+    e= time_end - time_start
+    print("The execution time of python program is : ",e)
+
 
     if (len(authors) != 0):
-        for i in range(len(authors)):
-            auth_name = authors[i]
-            print(str(i) + " " + auth_name + ": " + str(dblp.count_documents({"authors":auth_name})))
-
         selection = int(input("Please select a row the number: "))
 
         while (selection >= len(authors)):
@@ -44,13 +48,9 @@ def search_for_authors(dblp:Collection):
         print(author_name)
         for doc in cursor:
             print("Title: " + str(doc.get('title')) + '\n' + "Year: " + str(doc.get('year')) + '\n' + "Venue: " + str(doc.get('venue')) + '\n')
+
     else:
         print("Sorry, no author found with the given keyword: "+keyword)
-
-
-    time_end=datetime.now()
-    e= time_end - time_start
-    print("The execution time of python program is : ",e)
 
 def main():
     search_for_authors(dblp)
