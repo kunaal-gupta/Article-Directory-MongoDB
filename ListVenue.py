@@ -71,13 +71,15 @@ def list_venues():
     print('Venue Name, Number of articles in that venue, and the Number of articles that reference a paper in that venue')
     print()
     print('-----------------------Showing Results----------------')
-
-    for i in range(n):
-        print(Final[i])
+    try:
+        for i in range(n):
+            print(Final[i])
+    except IndexError:
+        print()
+        print('Unfortunately, we only have {} records, but you asked for {}'.format(len(Final), n))
     print()
     print('--------------------End of the result------------------')
     print()
-
 
 def main():
     list_venues()
