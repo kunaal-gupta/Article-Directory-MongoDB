@@ -6,11 +6,6 @@ from pprint import pprint
 from datetime import datetime
 import pandas as pd
 
-client = MongoClient("mongodb://localhost:27017")
-
-db = client['291db']
-dblp = db["dblp"]
-
 def search_for_authors(dblp:Collection):
 
     keyword = input("Enter String: ")
@@ -51,9 +46,3 @@ def search_for_authors(dblp:Collection):
 
     else:
         print("Sorry, no author found with the given keyword: "+keyword)
-
-def main():
-    search_for_authors(dblp)
-
-if __name__ == "__main__":
-    main()
