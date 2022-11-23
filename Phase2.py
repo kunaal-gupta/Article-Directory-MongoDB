@@ -46,7 +46,7 @@ def menu(dblp):
             search_articles()
 
         elif user_option == "2":
-            # clearTerminal()
+            clearTerminal()
             search_authors(dblp)
 
         elif user_option == "3":
