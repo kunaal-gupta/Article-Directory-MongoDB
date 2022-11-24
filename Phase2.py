@@ -2,6 +2,7 @@ import os
 from search_authors import *
 from search_articles import *
 from ListVenue import *
+from addArticle import *
 
 
 def create_conn(port):
@@ -18,18 +19,18 @@ def search_articles(dblp):
 
 
 def search_authors(dblp):
-    # clearTerminal()
+    clearTerminal()
     search_for_authors(dblp)
 
 
 def list_venues(dblp):
     clearTerminal()
-    list_venues(dblp)
+    list_the_venues(dblp)
 
 
-def add_article():
+def add_article(dblp):
     clearTerminal()
-    add_article(dblp)
+    add_an_article(dblp)
 
 
 def clearTerminal():
