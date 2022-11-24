@@ -1,5 +1,5 @@
 import os
-from load import *
+# from load import * 
 from search_authors import *
 from search_articles import *
 
