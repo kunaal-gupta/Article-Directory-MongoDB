@@ -9,5 +9,5 @@ Names & CCID of group members:
 This assignment is solely completed by 3 of us & we have not collaborated with anyone else outside of our group. 
 
 
-Assumptions: The users can only have one active session at the time. 
+Assumptions: None. 
 Source of information: MongoDb Manual, Lecture notes and CMPUT 291 Eclass
