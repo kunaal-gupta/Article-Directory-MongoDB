@@ -2,7 +2,7 @@ import os
 from pymongo.collection import Collection
 
 
-def list_venues(dblp:Collection):
+def list_the_venues(dblp:Collection):
     print('Fetching data. Please wait...')
     a = dblp.aggregate([{
         "$match": {
