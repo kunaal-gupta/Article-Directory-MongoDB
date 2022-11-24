@@ -1,7 +1,7 @@
 import os
-# from load import * 
 from search_authors import *
 from search_articles import *
+from ListVenue import *
 
 
 def create_conn(port):
@@ -11,27 +11,32 @@ def create_conn(port):
     dblp = db["dblp"]
     return dblp
 
+
 def search_articles(dblp):
     clearTerminal()
     search_for_articles(dblp)
+
 
 def search_authors(dblp):
     # clearTerminal()
     search_for_authors(dblp)
 
-def list_venues():
+
+def list_venues(dblp):
     clearTerminal()
-    print()
+    list_venues(dblp)
+
 
 def add_article():
     clearTerminal()
     print()
 
+
 def clearTerminal():
     os.system('cls' if os.name == 'nt' else 'clear')  # Clear the system terminal to look cleaner
 
-def menu(dblp):
 
+def menu(dblp):
     menu = "User Session\n1. Search for articles\n2. Search for authors \n3. List the venues\n4. Add an article \n5. Terminate the Program"
     while True:
         print(menu)
@@ -51,7 +56,7 @@ def menu(dblp):
             search_authors(dblp)
 
         elif user_option == "3":
-            list_venues()
+            list_venues(dblp)
 
         elif user_option == "4":
             add_article()
@@ -63,9 +68,10 @@ def menu(dblp):
         else:
             print("Please enter a valid Option #")
 
+
 def user_input():
     port_num = input("Port: ")
-    print("See Port: "+port_num)
+    print("See Port: " + port_num)
     port_num = int(port_num)
     dblp = create_conn(port_num)
     return dblp
@@ -75,6 +81,7 @@ def main():
     dblp = user_input()
     pprint(dblp)
     menu(dblp)
+
 
 if __name__ == "__main__":
     main()

@@ -1,14 +1,11 @@
 import os
 
+from pymongo import MongoClient
+from pymongo.collection import Collection
 import pymongo
 
-client = pymongo.MongoClient("mongodb://localhost:27017/")
 
-db = client['291db']
-dblp = db["dblp"]
-
-
-def list_venues():
+def list_venues(dblp:Collection):
     print('Fetching data. Please wait...')
     a = dblp.aggregate([{
         "$match": {
@@ -68,7 +65,7 @@ def list_venues():
 
     n = int(input('Enter a number n and see a listing of top n venues: '))
     print()
-    print('Venue Name, Number of articles in that venue, and the Number of articles that reference a paper in that venue')
+    print('Venue Name, Number of articles that reference a paper in that venue, Number of articles in that venue')
     print()
     print('-----------------------Showing Results----------------')
     try:
@@ -81,9 +78,4 @@ def list_venues():
     print('--------------------End of the result------------------')
     print()
 
-def main():
-    list_venues()
 
-
-if __name__ == '__main__':
-    main()
