@@ -1,6 +1,7 @@
 import os
 from load import *
 from search_authors import *
+from search_articles import *
 
 
 def create_conn(port):
@@ -10,9 +11,9 @@ def create_conn(port):
     dblp = db["dblp"]
     return dblp
 
-def search_articles():
+def search_articles(dblp):
     clearTerminal()
-    print("search_articles")
+    search_for_articles(dblp)
 
 def search_authors(dblp):
     # clearTerminal()
@@ -43,7 +44,7 @@ def menu(dblp):
             user_option = input(str("Invalid option entered. Please enter an option #: "))
 
         if user_option == "1":
-            search_articles()
+            search_articles(dblp)
 
         elif user_option == "2":
             clearTerminal()

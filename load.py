@@ -20,11 +20,11 @@ def insert_data(json_filename, port):
     client = MongoClient(f"mongodb://localhost:{port}")
     db = client["291db"]
     dblp = db["dblp"]
-    dblp.drop_indexes()
-    dblp.create_index([('references', 1)])
 
     # Indices
+    dblp.drop_indexes()
     dblp.update_many({}, [{'$set': {'year': {'$toString': '$year'}}}])  # Convert year to string
+    dblp.create_index([('references', 1)])
     dblp.create_index([('title', pymongo.TEXT), ('authors', pymongo.TEXT), ('abstract', pymongo.TEXT), ('venue', pymongo.TEXT), ('year', pymongo.TEXT)], default_language="none")
 
     time_end=datetime.now()
