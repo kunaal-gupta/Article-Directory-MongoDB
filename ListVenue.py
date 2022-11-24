@@ -1,8 +1,5 @@
 import os
-
-from pymongo import MongoClient
 from pymongo.collection import Collection
-import pymongo
 
 
 def list_venues(dblp:Collection):
