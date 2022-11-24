@@ -29,7 +29,7 @@ def list_venues(dblp):
 
 def add_article():
     clearTerminal()
-    print()
+    add_article(dblp)
 
 
 def clearTerminal():
@@ -59,7 +59,7 @@ def menu(dblp):
             list_venues(dblp)
 
         elif user_option == "4":
-            add_article()
+            add_article(dblp)
 
         elif user_option == "5":
             print("Going to Quit")
